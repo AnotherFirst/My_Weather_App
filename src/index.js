@@ -1,4 +1,6 @@
+// ********************************************************
 // Functions
+// ********************************************************
 
 function getDate(timestamp) {
     let months = [
@@ -26,6 +28,7 @@ function getDate(timestamp) {
 }
 
 function getPosition(event) {
+    event.preventDefault();
     navigator.geolocation.getCurrentPosition(getWeatherForCurrentPosition);
 }
 
@@ -68,13 +71,12 @@ function getWeatherForCurrentPosition(position) {
 function showCurrentWeather(response) {
     if (response.status === 200) {
         // change city name
-        let cityName = document.querySelector("#city");
-        cityName.innerHTML = response.data.name;
+        document.querySelector("#city").innerHTML = response.data.name;
 
         // change current condition
         let currentCondition = response.data.weather[0].description;
-        let condition = document.querySelector("#current-condition");
-        condition.innerHTML = currentCondition;
+        document.querySelector("#current-condition").innerHTML =
+            currentCondition;
 
         // change current condition icon
         let icon = document.querySelector("#current-icon");
@@ -85,17 +87,20 @@ function showCurrentWeather(response) {
 
         // change current temperature
         let currentTemperature = Math.round(response.data.main.temp);
-        let currentTemp = document.querySelector("#current-temp-value");
-        currentTemp.innerHTML = `${currentTemperature}`;
+        document.querySelector(
+            "#current-temp-value"
+        ).innerHTML = `${currentTemperature}`;
 
         // change min/max temperatures
         let minTemperature = Math.round(response.data.main.temp_min);
-        let minTemp = document.querySelector("#current-day-min-temp");
-        minTemp.innerHTML = `${minTemperature}°C`;
+        document.querySelector(
+            "#current-day-min-temp"
+        ).innerHTML = `${minTemperature}°C`;
 
         let maxTemperature = Math.round(response.data.main.temp_max);
-        let maxTemp = document.querySelector("#current-day-max-temp");
-        maxTemp.innerHTML = `${maxTemperature}°C`;
+        document.querySelector(
+            "#current-day-max-temp"
+        ).innerHTML = `${maxTemperature}°C`;
 
         // change sunrise/sunset
         let timezone = response.data.timezone;
@@ -103,11 +108,9 @@ function showCurrentWeather(response) {
         let sunsetUnix = response.data.sys.sunset;
 
         let sunriseTime = convertUnixTimestamptoTime(sunriseUnix, timezone);
-        let sunriseTimeReplace = document.querySelector("#current-day-sunrise");
-        sunriseTimeReplace.innerHTML = sunriseTime;
+        document.querySelector("#current-day-sunrise").innerHTML = sunriseTime;
         let sunsetTime = convertUnixTimestamptoTime(sunsetUnix, timezone);
-        let sunsetTimeReplace = document.querySelector("#current-day-sunset");
-        sunsetTimeReplace.innerHTML = sunsetTime;
+        document.querySelector("#current-day-sunset").innerHTML = sunsetTime;
 
         // todo: get forecast
     } else {
@@ -146,14 +149,16 @@ function getTempsInCelsius(event) {
     );
     currentTempValue.innerHTML = `${currentTempValueInC}`;
 
-    let currentTempUnit = document.querySelector("#current-temp-unit");
-    currentTempUnit.innerHTML = "°C";
+    // change current temp unit
+    document.querySelector("#current-temp-unit").innerHTML = "°C";
 
-    let unitCSelected = document.querySelector(".unitC");
-    unitCSelected.classList.add("selectedUnit");
+    // add "selectedUnit" class to the element that already has the "unitC" class
+    // to enable special formatting
+    document.querySelector(".unitC").classList.add("selectedUnit");
 
-    let unitF = document.querySelector(".unitF");
-    unitF.classList.remove("selectedUnit");
+    // remove "selectedUnit" class from the element that already has the "unitF" class
+    // to disable special formattoing
+    document.querySelector(".unitF").classList.remove("selectedUnit");
 }
 
 function getTempsInFahrenheit(event) {
@@ -164,14 +169,16 @@ function getTempsInFahrenheit(event) {
     );
     currentTempValue.innerHTML = `${currentTempValueInF}`;
 
-    let currentTempUnit = document.querySelector("#current-temp-unit");
-    currentTempUnit.innerHTML = "°F";
+    // change current temp unit
+    document.querySelector("#current-temp-unit").innerHTML = "°F";
 
-    let unitFSelected = document.querySelector(".unitF");
-    unitFSelected.classList.add("selectedUnit");
+    // add "selectedUnit" class to the element that already has the "unitF" class
+    // to enable special formatting
+    document.querySelector(".unitF").classList.add("selectedUnit");
 
-    let unitC = document.querySelector(".unitC");
-    unitC.classList.remove("selectedUnit");
+    // remove "selectedUnit" class from element that already has the "unitC" class
+    // to remove special formatting
+    document.querySelector(".unitC").classList.remove("selectedUnit");
 }
 
 // ********************************************************
@@ -211,12 +218,3 @@ linkUnitC.addEventListener("click", getTempsInCelsius);
 // unit switch F was clicked
 let linkUnitF = document.querySelector("#unit-f");
 linkUnitF.addEventListener("click", getTempsInFahrenheit);
-
-// ********************************************************
-// TODO:
-// ********************************************************
-
-// Humidity und Wind einfügen?
-// Evtl. noch min/max Temp in F/C umrechnen - geht das ohne den API call jedes mal zu wiederholen?
-// Evtl. die URL des API calls ändern je nach dem, ob Fahrenheit oder Celsius gewählt wurde?
-// Wenn z.B. unitC bereits selektiert ist und man klickt es nochmal an -> Temp nicht umrechnen
