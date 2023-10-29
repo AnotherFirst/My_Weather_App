@@ -1,0 +1,71 @@
+body {
+    background: #c0e0f7;
+    color: #e3eff8;
+    text-shadow: 5px 5px 10px rgba(52, 88, 161, 0.4);
+}
+
+.weather-app {
+    background: #6ab9f5;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.btn-success {
+    font-size: 70%;
+}
+
+.city {
+    font-weight: bold;
+    margin: 20px 0 20px;
+}
+
+.units {
+    text-decoration: none;
+    font-size: 90%;
+}
+
+.selectedUnit {
+    color: #fff;
+}
+
+.currentIconAndTemp {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 10px auto 15px auto;
+    text-decoration: none;
+}
+
+.forecastDayCol {
+    background: #328bdc;
+    border: 1px solid rgb(134, 197, 242);
+    border-radius: 10px;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    text-align: center;
+    text-shadow: 5px 5px 10px rgba(39, 74, 144, 0.4);
+}
+
+.forecastDayName {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.forecastEmoji {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.forecastHighTemp {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.forecastLowTemp {
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.8;
+}

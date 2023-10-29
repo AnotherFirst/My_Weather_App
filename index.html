@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="src/styles.css" />
+        <title>SheCodes Plus W5 Homework</title>
+        <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+        <script
+            src="https://kit.fontawesome.com/bcb58ea685.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <!-- Container for bootstrap -->
+        <div class="container">
+            <!-- Wrapper for weather app -->
+            <div class="weather-app">
+                <form id="search-form">
+                    <div class="row">
+                        <div class="col-6">
+                            <input
+                                type="text"
+                                class="form-control shadow-sm"
+                                id="search-city"
+                                placeholder="Enter a city"
+                                autofocus="on"
+                                autocomplete="off"
+                                required
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                type="submit"
+                                class="form-control btn btn-primary shadow-sm"
+                                value="Search"
+                            />
+                        </div>
+                        <div class="col">
+                            <input
+                                type="button"
+                                class="btn btn-success shadow-sm"
+                                id="btn-current-location"
+                                value="Current &#10; Location"
+                            />
+                        </div>
+                        <div class="col">
+                            <h3>
+                                <a
+                                    href="#"
+                                    class="units unitC selectedUnit"
+                                    id="unit-c"
+                                    >C</a
+                                >
+                                |
+                                <a href="#" class="units unitF" id="unit-f"
+                                    >F</a
+                                >
+                            </h3>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Top part with current conditions -->
+                <div class="row">
+                    <div class="col-10">
+                        <!-- <h1 class="selectedCity" id="selected-city">City, Country</h1> -> parked for later-->
+                        <h1 class="city" id="city">Enter a city</h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <section class="col">
+                        <h5 id="current-day-and-time">Day and time</h5>
+                        <h5 class="currentCondition" id="current-condition">
+                            Condition
+                        </h5>
+
+                        <p class="currentIconAndTemp">
+                            <!-- icon image is inserted based on current condition from API call -->
+                            <img src="#" alt="" id="current-icon" />
+                            <span id="current-temp-value">30</span>
+                            <span id="current-temp-unit">°C</span>
+                        </p>
+                    </section>
+
+                    <section class="col">
+                        <h6 class="currentDayDetailItem">
+                            <i
+                                class="fa-solid fa-temperature-three-quarters"
+                            ></i>
+                            Max Temp:
+                            <span id="current-day-max-temp">10°C</span>
+                        </h6>
+                        <h6 class="currentDayDetailItem">
+                            <i class="fa-solid fa-temperature-empty"></i>
+                            Min Temp: <span id="current-day-min-temp">0°C</span>
+                        </h6>
+                        <br />
+                        <h6 class="currentDayDetailItem">
+                            <i class="fa-solid fa-sun"></i>
+                            Sunrise: <span id="current-day-sunrise">7:00</span>
+                        </h6>
+                        <h6 class="currentDayDetailItem">
+                            <i class="fa-solid fa-moon"></i>
+                            Sunset: <span id="current-day-sunset">19:00</span>
+                        </h6>
+                    </section>
+                </div>
+                <hr />
+
+                <section class="forecast">
+                    <div class="row">
+                        <div class="col forecastDayCol">
+                            <div class="forecastDayName">Mon</div>
+                            <div class="forecastEmoji">
+                                <i class="fa-solid fa-cloud"></i>
+                            </div>
+                            <div class="forecastHighTemp">10°C</div>
+                            <div class="forecastLowTemp">0°C</div>
+                        </div>
+
+                        <div class="col forecastDayCol">
+                            <div class="forecastDayName">Tue</div>
+                            <div class="forecastEmoji">
+                                <i class="fa-solid fa-cloud"></i>
+                            </div>
+                            <div class="forecastHighTemp">10°C</div>
+                            <div class="forecastLowTemp">0°C</div>
+                        </div>
+
+                        <div class="col forecastDayCol">
+                            <div class="forecastDayName">Wed</div>
+                            <div class="forecastEmoji">
+                                <i class="fa-solid fa-cloud"></i>
+                            </div>
+                            <div class="forecastHighTemp">10°C</div>
+                            <div class="forecastLowTemp">0°C</div>
+                        </div>
+
+                        <div class="col forecastDayCol">
+                            <div class="forecastDayName">Thu</div>
+                            <div class="forecastEmoji">
+                                <i class="fa-solid fa-cloud"></i>
+                            </div>
+                            <div class="forecastHighTemp">10°C</div>
+                            <div class="forecastLowTemp">0°C</div>
+                        </div>
+
+                        <div class="col forecastDayCol">
+                            <div class="forecastDayName">Fri</div>
+                            <div class="forecastEmoji">
+                                <i class="fa-solid fa-cloud"></i>
+                            </div>
+                            <div class="forecastHighTemp">10°C</div>
+                            <div class="forecastLowTemp">0°C</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <script src="src/index.js"></script>
+    </body>
+</html>
